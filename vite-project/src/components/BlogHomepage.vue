@@ -7,10 +7,10 @@
           <h2>我的博客</h2>
         </div>
         <ul class="nav-links">
-          <li><a href="#home">首页</a></li>
-          <li><a href="#about">关于我</a></li>
-          <li><a href="#projects">项目</a></li>
-          <li><a href="#contact">联系</a></li>
+          <li><a href="#home" @click="scrollToSection('home', $event)">首页</a></li>
+          <li><a href="#about" @click="scrollToSection('about', $event)">关于我</a></li>
+          <li><a href="#projects" @click="scrollToSection('projects', $event)">项目</a></li>
+          <li><a href="#contact" @click="scrollToSection('contact', $event)">联系</a></li>
         </ul>
       </nav>
     </header>
@@ -29,8 +29,8 @@
                 热爱编程，专注于后端开发，喜欢创造美好的用户体验
               </p>
               <div class="hero-buttons">
-                <button class="btn btn-primary">查看我的作品</button>
-                <button class="btn btn-secondary">联系我</button>
+                <button class="btn btn-primary" @click="scrollToSection('projects')">查看我的作品</button>
+                <button class="btn btn-secondary" @click="scrollToSection('contact')">联系我</button>
               </div>
             </div>
             <div class="hero-image">
@@ -206,7 +206,21 @@
 </template>
 
 <script setup>
-// 这里可以添加响应式数据和逻辑
+import { ref } from 'vue'
+
+// 平滑滚动到指定区域
+const scrollToSection = (sectionId, event) => {
+  if (event) {
+    event.preventDefault()
+  }
+  const element = document.getElementById(sectionId)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 </script>
 
 <style scoped>
