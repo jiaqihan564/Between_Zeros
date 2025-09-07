@@ -4,7 +4,6 @@ import BlogHomepage from './components/BlogHomepage.vue'
 import DynamicBackground from './components/DynamicBackground.vue'
 import DynamicCursor from './components/DynamicCursor.vue'
 import ClickParticles from './components/ClickParticles.vue'
-import BouncingBalls from './components/BouncingBalls.vue'
 
 const clickParticles = ref(null)
 
@@ -27,9 +26,6 @@ onMounted(() => {
 
 <template>
   <div id="app">
-    <!-- 碰撞球背景 -->
-    <BouncingBalls />
-    
     <!-- 动态背景 -->
     <DynamicBackground />
     
@@ -54,6 +50,20 @@ onMounted(() => {
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -61,7 +71,20 @@ body {
   line-height: 1.6;
   color: #333;
   overflow-x: hidden;
-  background: transparent;
+  background: linear-gradient(
+    135deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 #app {
@@ -70,7 +93,7 @@ body {
 }
 
 /* 确保内容在动态背景之上 */
-#app > *:not(.dynamic-background):not(.dynamic-cursor):not(.bouncing-balls) {
+#app > *:not(.dynamic-background):not(.dynamic-cursor):not(.click-particles) {
   position: relative;
   z-index: 1;
 }

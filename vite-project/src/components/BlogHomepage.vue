@@ -281,10 +281,11 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   z-index: 1000;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav {
@@ -803,7 +804,7 @@ section {
   justify-content: center;
   box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 9999;
   opacity: 0.9;
 }
 
