@@ -202,11 +202,26 @@
         </div>
       </div>
     </footer>
+
+    <!-- 回到顶部按钮 -->
+    <transition name="fade">
+      <button 
+        v-show="showBackToTop" 
+        @click="scrollToTop" 
+        class="back-to-top"
+        title="回到顶部"
+      >
+        <span class="back-to-top-icon">↑</span>
+      </button>
+    </transition>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+// 控制回到顶部按钮的显示
+const showBackToTop = ref(false)
 
 // 平滑滚动到指定区域
 const scrollToSection = (sectionId, event) => {
@@ -221,6 +236,29 @@ const scrollToSection = (sectionId, event) => {
     })
   }
 }
+
+// 回到顶部功能
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+
+// 监听滚动事件
+const handleScroll = () => {
+  showBackToTop.value = window.scrollY > 300
+}
+
+// 组件挂载时添加滚动监听器
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+// 组件卸载时移除滚动监听器
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <style scoped>
@@ -746,6 +784,62 @@ section {
   
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* 回到顶部按钮样式 */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0.9;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  opacity: 1;
+}
+
+.back-to-top-icon {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1;
+}
+
+/* 淡入淡出动画 */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .back-to-top-icon {
+    font-size: 18px;
   }
 }
 
