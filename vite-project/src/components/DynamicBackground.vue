@@ -68,7 +68,12 @@
     <canvas ref="particleCanvas" class="particle-canvas"></canvas>
     
     <!-- 星星背景 -->
-    <div class="stars" :style="{ transform: `translateY(${scrollY * 0.5}px)` }">
+    <div class="stars" :style="{ 
+      transform: `translateY(${scrollY * 0.5}px) 
+                 rotateX(${mouseNormalized.y * 3}deg) 
+                 rotateY(${mouseNormalized.x * 3}deg) 
+                 translateZ(${mouseNormalized.x * 15 + mouseNormalized.y * 15}px)` 
+    }">
       <div 
         v-for="(star, index) in stars" 
         :key="'star-' + index"
@@ -83,7 +88,12 @@
     </div>
     
     <!-- 浮动几何图形 -->
-    <div class="floating-shapes" :style="{ transform: `translateY(${scrollY * 0.6}px)` }">
+    <div class="floating-shapes" :style="{ 
+      transform: `translateY(${scrollY * 0.6}px) 
+                 rotateX(${mouseNormalized.y * 5}deg) 
+                 rotateY(${mouseNormalized.x * 5}deg) 
+                 translateZ(${mouseNormalized.x * 20 + mouseNormalized.y * 20}px)` 
+    }">
       <div 
         v-for="(shape, index) in shapes" 
         :key="index"
@@ -99,7 +109,12 @@
     
     
     <!-- 发光球体 -->
-    <div class="glow-spheres" :style="{ transform: `translateY(${scrollY * 0.8}px)` }">
+    <div class="glow-spheres" :style="{ 
+      transform: `translateY(${scrollY * 0.8}px) 
+                 rotateX(${mouseNormalized.y * 8}deg) 
+                 rotateY(${mouseNormalized.x * 8}deg) 
+                 translateZ(${mouseNormalized.x * 30 + mouseNormalized.y * 30}px)` 
+    }">
       <div 
         v-for="(sphere, index) in glowSpheres" 
         :key="'sphere-' + index"
@@ -120,7 +135,12 @@
     </div>
     
     <!-- 浮动文字 -->
-    <div class="floating-text" :style="{ transform: `translateY(${scrollY * 0.9}px)` }">
+    <div class="floating-text" :style="{ 
+      transform: `translateY(${scrollY * 0.9}px) 
+                 rotateX(${mouseNormalized.y * 6}deg) 
+                 rotateY(${mouseNormalized.x * 6}deg) 
+                 translateZ(${mouseNormalized.x * 25 + mouseNormalized.y * 25}px)` 
+    }">
       <div 
         v-for="(text, index) in floatingTexts" 
         :key="'text-' + index"
@@ -145,11 +165,14 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const particleCanvas = ref(null)
 let animationId = null
 let particles = []
-let mouse = { x: 0, y: 0 }
 
 // 滚动相关状态
 const scrollY = ref(0)
 const backgroundHeight = ref(window.innerHeight * 3) // 背景高度为视窗高度的3倍
+
+// 鼠标位置状态
+const mouse = ref({ x: 0, y: 0 })
+const mouseNormalized = ref({ x: 0, y: 0 })
 
 // 浮动图形配置 - 优化分布和密度
 const shapes = ref([
@@ -344,7 +367,15 @@ const animate = () => {
   animationId = requestAnimationFrame(animate)
 }
 
-// 移除鼠标移动事件，不再需要鼠标交互
+// 鼠标移动事件处理
+const handleMouseMove = (e) => {
+  mouse.value.x = e.clientX
+  mouse.value.y = e.clientY
+  
+  // 将鼠标位置标准化到 -1 到 1 之间
+  mouseNormalized.value.x = (e.clientX / window.innerWidth) * 2 - 1
+  mouseNormalized.value.y = (e.clientY / window.innerHeight) * 2 - 1
+}
 
 
 // 发光球体悬停处理
@@ -383,6 +414,7 @@ const handleResize = () => {
 onMounted(() => {
   initParticles()
   animate()
+  window.addEventListener('mousemove', handleMouseMove)
   window.addEventListener('resize', handleResize)
   window.addEventListener('scroll', handleScroll)
 })
@@ -391,6 +423,7 @@ onUnmounted(() => {
   if (animationId) {
     cancelAnimationFrame(animationId)
   }
+  window.removeEventListener('mousemove', handleMouseMove)
   window.removeEventListener('resize', handleResize)
   window.removeEventListener('scroll', handleScroll)
 })
@@ -409,6 +442,8 @@ onUnmounted(() => {
   will-change: transform;
   margin: 0;
   padding: 0;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .particle-canvas {
@@ -457,6 +492,7 @@ onUnmounted(() => {
   height: 100vh;
   min-height: 100vh;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .shape {
@@ -526,6 +562,7 @@ onUnmounted(() => {
   height: 100vh;
   min-height: 100vh;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .star {
@@ -554,6 +591,7 @@ onUnmounted(() => {
   height: 100vh;
   min-height: 100vh;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .glow-sphere {
@@ -589,6 +627,7 @@ onUnmounted(() => {
   height: 100vh;
   min-height: 100vh;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
 .floating-text-item {
