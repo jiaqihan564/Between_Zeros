@@ -19,49 +19,54 @@
     <main class="main-content">
       <!-- 英雄区域 -->
       <section id="home" class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            你好，我是 <span class="highlight">开发者</span>
-          </h1>
-          <p class="hero-subtitle">
-            热爱编程，专注于前端开发，喜欢创造美好的用户体验
-          </p>
-          <div class="hero-buttons">
-            <button class="btn btn-primary">查看我的作品</button>
-            <button class="btn btn-secondary">联系我</button>
-          </div>
-        </div>
-        <div class="hero-image">
-          <div class="avatar-placeholder">
-            <div class="avatar">👨‍💻</div>
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-text">
+              <h1 class="hero-title">
+                你好，我是 <span class="highlight">Jspring</span>
+              </h1>
+              <p class="hero-subtitle">
+                热爱编程，专注于后端开发，喜欢创造美好的用户体验
+              </p>
+              <div class="hero-buttons">
+                <button class="btn btn-primary">查看我的作品</button>
+                <button class="btn btn-secondary">联系我</button>
+              </div>
+            </div>
+            <div class="hero-image">
+              <div class="avatar-container">
+                <div class="avatar">👨‍💻</div>
+                <div class="avatar-glow"></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- 关于我区域 -->
       <section id="about" class="about">
-        <div class="section-header">
-          <h2>关于我</h2>
-          <p>了解我的技能和经历</p>
-        </div>
-        <div class="about-content">
-          <div class="about-text">
-            <p>
-              我是一名充满热情的前端开发者，拥有多年的Web开发经验。
-              我热爱学习新技术，喜欢将创意转化为现实。
-              在业余时间，我喜欢阅读技术博客，参与开源项目。
-            </p>
-            <div class="skills">
-              <h3>技能栈</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Vue.js</span>
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">CSS3</span>
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Vite</span>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>关于我</h2>
+            <p>了解我的技能和经历</p>
+          </div>
+          <div class="about-content">
+            <div class="about-text">
+              <p class="about-description">
+                我是一名后端开发者，专注于后端开发，喜欢创造美好的用户体验。拥有丰富的项目经验，擅长构建高性能、可扩展的Web应用程序。
+              </p>
+              <div class="skills">
+                <h3>技能栈</h3>
+                <div class="skill-tags">
+                  <span class="skill-tag">Java</span>
+                  <span class="skill-tag">Spring</span>
+                  <span class="skill-tag">Spring Boot</span>
+                  <span class="skill-tag">MyBatis</span>
+                  <span class="skill-tag">MySQL</span>
+                  <span class="skill-tag">Redis</span>
+                  <span class="skill-tag">Git</span>
+                  <span class="skill-tag">Docker</span>
+                </div>
               </div>
             </div>
           </div>
@@ -70,10 +75,11 @@
 
       <!-- 项目展示区域 -->
       <section id="projects" class="projects">
-        <div class="section-header">
-          <h2>精选项目</h2>
-          <p>我的一些得意之作</p>
-        </div>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>精选项目</h2>
+            <p>我的一些得意之作</p>
+          </div>
         <div class="projects-grid">
           <div class="project-card">
             <div class="project-image">
@@ -132,21 +138,23 @@
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       <!-- 联系我区域 -->
       <section id="contact" class="contact">
-        <div class="section-header">
-          <h2>联系我</h2>
-          <p>让我们一起创造美好的东西</p>
-        </div>
+        <div class="section-container">
+          <div class="section-header">
+            <h2>联系我</h2>
+            <p>让我们一起创造美好的东西</p>
+          </div>
         <div class="contact-content">
           <div class="contact-info">
             <div class="contact-item">
               <div class="contact-icon">📧</div>
               <div class="contact-details">
                 <h4>邮箱</h4>
-                <p>your.email@example.com</p>
+                <p>3259246363@qq.com</p>
               </div>
             </div>
             <div class="contact-item">
@@ -160,7 +168,7 @@
               <div class="contact-icon">🐙</div>
               <div class="contact-details">
                 <h4>GitHub</h4>
-                <p>github.com/yourusername</p>
+                <p>https://github.com/jiaqihan564/</p>
               </div>
             </div>
           </div>
@@ -178,6 +186,7 @@
               <button type="submit" class="btn btn-primary">发送消息</button>
             </form>
           </div>
+        </div>
         </div>
       </section>
     </main>
@@ -204,8 +213,14 @@
 /* 基础样式 */
 .blog-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #333;
+}
+
+/* 通用容器样式 */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* 头部导航 */
@@ -261,18 +276,32 @@
 
 /* 英雄区域 */
 .hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 0 4rem;
+  color: white;
+}
+
+.hero-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 0 2rem;
+}
+
+.hero-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
-  min-height: 80vh;
 }
 
-.hero-content {
-  color: white;
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .hero-title {
@@ -340,27 +369,45 @@
   align-items: center;
 }
 
-.avatar-placeholder {
+.avatar-container {
+  position: relative;
   width: 300px;
   height: 300px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(10px);
+  font-size: 6rem;
   border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
-.avatar {
-  font-size: 6rem;
+.avatar-glow {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 0.8; }
 }
 
 /* 通用区域样式 */
 section {
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  padding: 4rem 0;
 }
 
 .section-header {
@@ -370,8 +417,27 @@ section {
 
 .section-header h2 {
   font-size: 2.5rem;
-  color: white;
+  font-weight: 700;
   margin-bottom: 1rem;
+  color: white;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  color: white;
+}
+
+/* 关于我区域 */
+.about {
+  color: white;
+}
+
+.about-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 .section-header p {
@@ -406,12 +472,12 @@ section {
 }
 
 .skill-tag {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 25px;
   font-size: 0.9rem;
-  backdrop-filter: blur(10px);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* 项目展示区域 */
@@ -422,11 +488,11 @@ section {
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
   overflow: hidden;
-  backdrop-filter: blur(10px);
   transition: transform 0.3s ease;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .project-card:hover {
@@ -469,11 +535,12 @@ section {
 }
 
 .tech-tag {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 15px;
   font-size: 0.8rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .project-links {
@@ -494,10 +561,10 @@ section {
 
 /* 联系我区域 */
 .contact {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   margin: 2rem;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .contact-content {
@@ -599,6 +666,10 @@ section {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+  .section-container {
+    padding: 0 1rem;
+  }
+  
   .nav {
     flex-direction: column;
     gap: 1rem;
@@ -609,6 +680,10 @@ section {
   }
   
   .hero {
+    padding: 4rem 0 2rem;
+  }
+  
+  .hero-content {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 2rem;
@@ -618,8 +693,31 @@ section {
     font-size: 2.5rem;
   }
   
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .avatar-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .avatar {
+    font-size: 5rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
   .hero-buttons {
     justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
   }
   
   .contact-content {
